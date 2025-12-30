@@ -14,6 +14,9 @@ function Header() {
         <Link href="/posts">
           <p className="hover:text-gray-300">Posts</p>
         </Link>
+        <Link href="/users">
+          <p className="hover:text-gray-300">Users</p>
+        </Link>
       </nav>
     </header>
   );
