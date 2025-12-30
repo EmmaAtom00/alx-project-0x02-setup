@@ -1,0 +1,7 @@
+interface CardProps {
+  title: string;
+  content: string;
+//   footer?: string;
+//   isActive: boolean;
+//   onClick: () => void;
+}
