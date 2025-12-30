@@ -3,35 +3,12 @@ import Header from "@/components/layout/Header";
 import { PostProps } from "@/interfaces";
 import React, { useEffect, useState } from "react";
 
-function posts() {
-  const [posts, setPosts] = useState<PostProps[]>([]);
-  const [loading, setLoading] = useState(true);
+interface PostsPageProps {
+  posts: PostProps[];
+}
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/posts"
-        );
-        const data = await response.json();
-
-        // Map data to match PostProps
-        const formattedPosts = data.map((post: any) => ({
-          title: post.title,
-          content: post.body,
-          userId: post.userId,
-        }));
-
-        setPosts(formattedPosts);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+const posts: React.FC<PostsPageProps> = ({ posts }) => {
+  const [loading, setLoading] = useState(false);
 
   return (
     <>
@@ -41,18 +18,47 @@ function posts() {
       ) : (
         <div className="p-8">
           <h1 className="text-2xl font-bold mb-4">Posts</h1>
-          {posts.map((post, index) => (
-            <PostCard
-              key={index}
-              title={post.title}
-              content={post.content}
-              userId={post.userId}
-            />
-          ))}
-        </div>
-      )}
-    </>
-  );
-}
+          {posts.length === 0 ? (
+            <p>No posts available.</p>
+          ) : (
+            posts.map((post, index) => (
+              <PostCard
+                key={index}
+                title={post.title}
+                content={post.content}
+                userId={post.userId}
+              />
+            )))}
+          </div>
+        )}
+        </>
+    )}; 
+
+
+export const getStaticProps = async () => {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await response.json();
+
+    const posts: PostProps[] = data.map((post: any) => ({
+      title: post.title,
+      content: post.body,
+      userId: post.userId,
+    }));
+
+    return {
+      props: {
+        posts,
+      },
+    };
+  } catch (error) {
+    // console.error("Error fetching posts:", error);
+    return {
+      props: {
+        posts: [],
+      },
+    };
+  }
+};
 
 export default posts;
