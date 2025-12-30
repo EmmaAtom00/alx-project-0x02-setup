@@ -7,7 +7,7 @@ interface UsersPageProps {
   users: UserProps[];
 }
 
-const users: React.FC<UsersPageProps> = ({ users }) => {
+const Users: React.FC<UsersPageProps> = ({ users }) => {
   return (
     <div className="p-4">
       <Header />
@@ -42,4 +42,4 @@ export const getStaticProps = async () => {
   }
 };
 
-export default users;
+export default Users;
