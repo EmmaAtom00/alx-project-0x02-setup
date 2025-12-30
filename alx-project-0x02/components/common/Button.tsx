@@ -1,4 +1,4 @@
-import { ButtonProps } from '@/interfaces'
+import { type ButtonProps } from '@/interfaces'
 const sizeClasses = {
   small: "px-16 py-8 text-sm",
   medium: "px-32 py-16 text-base",
