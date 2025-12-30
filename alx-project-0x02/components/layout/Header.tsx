@@ -3,16 +3,19 @@ import React from "react";
 
 function Header() {
   return (
-    <div>
-      <ul>
-        <li>
-          <Link href="/home">Home</Link>
-        </li>
-        <li>
-          <Link href="/about">About</Link>
-        </li>
-      </ul>
-    </div>
+    <header className="bg-gray-800 text-white p-4">
+      <nav className="flex space-x-4">
+        <Link href="/home">
+          <p className="hover:text-gray-300">Home</p>
+        </Link>
+        <Link href="/about">
+          <p className="hover:text-gray-300">About</p>
+        </Link>
+        <Link href="/posts">
+          <p className="hover:text-gray-300">Posts</p>
+        </Link>
+      </nav>
+    </header>
   );
 }
 

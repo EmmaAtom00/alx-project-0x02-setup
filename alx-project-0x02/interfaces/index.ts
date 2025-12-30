@@ -1,3 +1,7 @@
+export interface LayoutProps {
+  children: React.ReactNode;
+}
+
 export interface CardProps {
   title: string;
   content: string;
@@ -9,7 +13,13 @@ export interface CardProps {
 export interface PostModalProps {
   title?: string;
   content?: string;
-  submitAction?: ({ title, content }: { title: string; content: string }) => void;
+  submitAction?: ({
+    title,
+    content,
+  }: {
+    title: string;
+    content: string;
+  }) => void;
 }
 
 export interface ButtonProps {
@@ -18,4 +28,3 @@ export interface ButtonProps {
   children?: React.ReactNode;
   onClick?: () => void;
 }
-
