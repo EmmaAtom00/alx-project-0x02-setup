@@ -7,6 +7,7 @@ function about() {
     <div>
       <Header />
       <h1>About</h1>
+      <div className="p-4 flex flex-col gap-4 max-w-full">
       <Button size="large" shape="rounded-full">
         Large Button
       </Button>
@@ -16,6 +17,7 @@ function about() {
       <Button size="small" shape="rounded-sm">
         Small Button
       </Button>
+      </div>
     </div>
   );
 }
