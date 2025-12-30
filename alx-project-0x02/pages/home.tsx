@@ -6,8 +6,10 @@ function home() {
     const [title, setTitle] = React.useState("Home Page");
     const [content, setContent] = React.useState("This is the home page of our Next.js application.");
     const [displaModal, setDisplayModal] = React.useState(false);
-    const toggleModal = () => {
+    const toggleModal = ({ title, content }: { title: string; content: string }) => {
         setDisplayModal(!displaModal);
+        setTitle(title);
+        setContent(content);
     }
   return (
     <div>
@@ -19,7 +21,7 @@ function home() {
         <button onClick={() => setDisplayModal(!displaModal)}>Toggle Modal</button>
         {displaModal && (
             <div>
-                <PostModal title={title} content={content} submitAction={toggleModal} setTitle={setTitle} setContent={setContent} />
+                <PostModal title={title} content={content} submitAction={toggleModal} />
             </div>
         )} 
     </div>

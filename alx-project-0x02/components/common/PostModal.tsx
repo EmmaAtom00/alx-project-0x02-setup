@@ -5,17 +5,14 @@ function PostModal({
   title,
   content,
   submitAction,
-  setTitle,
-  setContent,
+
 }: PostModalProps) {
   const [titleInput, setTitleInput] = React.useState(title || "");
   const [contentInput, setContentInput] = React.useState(content || "");
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
-    setTitle(titleInput);
-    setContent(contentInput);
     if (submitAction) {
-      submitAction();
+      submitAction({ title: titleInput, content: contentInput });
     }
   };
   return (
